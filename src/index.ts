@@ -13,8 +13,8 @@ async function main() {
 		process.exit(1);
 	}
 
-	const { ROVER_HOST, ROVER_API_KEY, ROVER_REPO_ID } = envResult.data;
-	const SSE_URL = `${ROVER_HOST}/mcp/${ROVER_REPO_ID}/sse`;
+	const { ROVER_HOST, ROVER_API_KEY } = envResult.data;
+	const SSE_URL = `${ROVER_HOST}/mcp/sse`;
 
 	const getCommonHeaders = () => ({
 		authorization: `Bearer ${ROVER_API_KEY}`,
@@ -43,7 +43,7 @@ async function main() {
 		version: "0.0.1",
 	});
 
-	log(`connecting to Rover`, { sse: SSE_URL });
+	log("connecting to Rover", { sse: SSE_URL });
 	try {
 		await client.connect(createClientTransport());
 	} catch (error) {
@@ -52,7 +52,17 @@ async function main() {
 	}
 
 	const serverInfo = client.getServerVersion();
+	if (!serverInfo) {
+		log("connected but server info missing");
+		process.exit(1);
+	}
+
 	const serverCapabilities = client.getServerCapabilities();
+	if (!serverCapabilities) {
+		log("connected but server capabilities missing");
+		process.exit(1);
+	}
+
 	log("connected", {
 		info: serverInfo,
 		capabilities: serverCapabilities,
@@ -61,14 +71,11 @@ async function main() {
 	const serverTransport = new StdioServerTransport();
 	const server = new McpServer(
 		{
-			// At this point, this information is available
-			name: serverInfo?.name!,
-			version: serverInfo?.version!,
+			name: serverInfo.name,
+			version: serverInfo.version,
 		},
 		{
-			capabilities: {
-				tools: serverCapabilities?.tools,
-			},
+			capabilities: serverCapabilities,
 		},
 	);
 	await server.connect(serverTransport);
@@ -78,9 +85,7 @@ async function main() {
 		await proxyServer({
 			server: server.server,
 			client: client,
-			serverCapabilities: {
-				tools: serverCapabilities?.tools,
-			},
+			serverCapabilities,
 		});
 	} catch (error) {
 		log("failed to run proxy", { error });

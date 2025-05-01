@@ -3,7 +3,6 @@ import { z } from "zod";
 const envSchema = z.object({
 	ROVER_HOST: z.string().default("https://api.getrover.com"),
 	ROVER_API_KEY: z.string().describe("Your Rover API key"),
-	ROVER_REPO_ID: z.string().describe("Your Rover repository ID"),
 });
 type EnvSchema = z.infer<typeof envSchema>;
 
