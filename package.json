@@ -12,6 +12,7 @@
 	"scripts": {
 		"dev": "bun --hot src/index.ts",
 		"build": "bun build.ts",
+		"build:bin": "bun build.ts compile",
 		"lint": "bun biome check ."
 	},
 	"devDependencies": {
