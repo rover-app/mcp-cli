@@ -3,9 +3,19 @@ import { SSEClientTransport } from "@modelcontextprotocol/sdk/client/sse.js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { proxyServer } from "mcp-proxy";
+import updateNotifier from "update-notifier";
+import pkgJson from "../package.json";
 import { loadEnv, log } from "./utils";
 
 async function main() {
+	const notifier = updateNotifier({ pkg: pkgJson });
+	if (notifier.update) {
+		log("a new version is available", {
+			current: notifier.update.current,
+			latest: notifier.update.latest,
+		});
+	}
+
 	const envResult = loadEnv();
 	if (!envResult.ok) {
 		const errors = envResult.error.flatten();

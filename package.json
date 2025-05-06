@@ -1,27 +1,32 @@
 {
 	"name": "@getrover/mcp-cli",
-	"description": "Rover MCP server",
+	"description": "Rover stdio MCP server",
 	"version": "0.0.1",
 	"private": true,
 	"author": {
 		"name": "getrover"
 	},
+	"keywords": ["MCP", "Model Context Protocol", "Rover"],
 	"bin": {
 		"rover-mcp": "dist/index.js"
 	},
+	"files": ["dist", "README.md", "package.json"],
 	"scripts": {
 		"dev": "bun --hot src/index.ts",
 		"build": "bun build.ts",
 		"build:bin": "bun build.ts compile",
-		"lint": "bun biome check ."
+		"lint": "bun biome check .",
+		"prepack": "bun run build"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
-		"@types/bun": "latest"
+		"@types/bun": "latest",
+		"@types/update-notifier": "^6.0.8"
 	},
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "^1.10.2",
 		"mcp-proxy": "^2.12.2",
+		"update-notifier": "^7.3.1",
 		"zod": "^3.24.3"
 	}
 }
