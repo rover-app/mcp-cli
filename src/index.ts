@@ -50,7 +50,7 @@ async function main() {
 	};
 	const client = new Client({
 		name: "rover-mcp-proxy",
-		version: "0.0.1",
+		version: pkgJson.version,
 	});
 
 	log("connecting to Rover", { sse: SSE_URL });
