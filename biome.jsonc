@@ -3,11 +3,12 @@
 	"vcs": {
 		"enabled": false,
 		"clientKind": "git",
-		"useIgnoreFile": false
+		"useIgnoreFile": false,
+		"defaultBranch": "main"
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": []
+		"ignore": ["**/dist/*"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -19,12 +20,40 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"suspicious": {
+				"noConsole": {
+					"level": "error",
+					"fix": "none",
+					"options": { "allow": [] }
+				}
+			},
+			"style": {
+				"useBlockStatements": {
+					"level": "error",
+					"fix": "unsafe"
+				}
+			}
 		}
 	},
 	"javascript": {
 		"formatter": {
-			"quoteStyle": "double"
+			"jsxQuoteStyle": "double",
+			"quoteStyle": "double",
+			"semicolons": "always",
+			"trailingCommas": "all"
 		}
-	}
+	},
+	"overrides": [
+		{
+			"include": ["./build.ts", "./**/scripts/**/*"],
+			"linter": {
+				"rules": {
+					"suspicious": {
+						"noConsole": "off"
+					}
+				}
+			}
+		}
+	]
 }
