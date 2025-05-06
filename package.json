@@ -11,9 +11,11 @@
 	},
 	"scripts": {
 		"dev": "bun --hot src/index.ts",
-		"build": "bun build.ts"
+		"build": "bun build.ts",
+		"lint": "bun biome check ."
 	},
 	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
 		"@types/bun": "latest"
 	},
 	"dependencies": {

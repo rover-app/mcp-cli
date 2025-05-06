@@ -25,5 +25,7 @@ export function log(message: string, data?: Record<string, unknown>) {
 	]
 		.filter(Boolean)
 		.join(" ");
+
+	// biome-ignore lint/suspicious/noConsole: we write logs to stderr since stdout/stdin is in use
 	console.error(logLine);
 }
