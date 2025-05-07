@@ -1,16 +1,16 @@
 {
 	"name": "@getrover/mcp-cli",
-	"description": "Rover stdio MCP server",
+	"description": "Connect any MCP client to Curio, Rover's code agent, via the stdio transport.",
 	"version": "0.0.1",
-	"private": true,
 	"author": {
 		"name": "getrover"
 	},
-	"keywords": ["MCP", "Model Context Protocol", "Rover"],
+	"license": "MIT",
+	"keywords": ["MCP", "Model Context Protocol", "Rover", "stdio"],
 	"bin": {
 		"rover-mcp": "dist/index.js"
 	},
-	"files": ["dist", "README.md", "package.json"],
+	"files": ["dist", "LICENSE.md", "README.md", "package.json", "bun.lock"],
 	"scripts": {
 		"dev": "bun --hot src/index.ts",
 		"build": "bun build.ts",
