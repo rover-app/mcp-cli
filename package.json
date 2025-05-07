@@ -1,7 +1,7 @@
 {
 	"name": "@getrover/mcp-cli",
 	"description": "Connect any MCP client to Curio, Rover's code agent, via the stdio transport.",
-	"version": "0.0.1",
+	"version": "0.0.1-dev.0",
 	"author": {
 		"name": "getrover"
 	},
