@@ -28,7 +28,6 @@ if (process.argv[2] === "compile") {
 		target: "node",
 		outdir: "./dist",
 		sourcemap: "external",
-		banner: "#!/usr/bin/env node",
 		entrypoints: ["./src/index.ts"],
 	});
 }
