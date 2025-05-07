@@ -1,0 +1,32 @@
+name: Lint
+on:
+  push:
+
+concurrency:
+  group: ci-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DO_NOT_TRACK: 1
+
+jobs:
+  lint:
+    runs-on: blacksmith-4vcpu-ubuntu-2204
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
+        with:
+          version: 2025.2.7
+          install: true
+          cache: true
+      - name: Restore Bun dependencies cache
+        uses: useblacksmith/cache@v5
+        continue-on-error: false
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-bun-deps-${{ hashFiles('bun.lock') }}
+          restore-keys: ${{ runner.os }}-bun-deps-
+      - name: Bun install
+        run: bun install --frozen-lockfile
+      - name: Lint
+        run: bun run lint

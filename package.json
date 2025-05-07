@@ -10,7 +10,14 @@
 	"bin": {
 		"rover-mcp": "dist/index.js"
 	},
-	"files": ["dist", "LICENSE.md", "README.md", "package.json", "bun.lock"],
+	"files": [
+		"dist",
+		"LICENSE.md",
+		"README.md",
+		"package.json",
+		"bun.lock",
+		"yarn.lock"
+	],
 	"scripts": {
 		"dev": "bun --hot src/index.ts",
 		"build": "bun build.ts",
