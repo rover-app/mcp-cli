@@ -1,2 +1,4 @@
 [tools]
 bun = "1.2.10"
+node = "22.13.1"
+"npm:@withgraphite/graphite-cli" = "1.5.3"

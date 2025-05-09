@@ -17,6 +17,7 @@
 		"build": "bun build.ts",
 		"build:bin": "bun build.ts compile",
 		"lint": "bun biome check .",
+		"format": "bun biome format --write .",
 		"prepack": "bun run build"
 	},
 	"devDependencies": {
