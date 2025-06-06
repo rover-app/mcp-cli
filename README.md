@@ -50,7 +50,7 @@ through the Zed extension registry. This is the recommended way to install the R
 
 ```sh
 # Optionally, put the file somewhere on your path
-$ wget -O rover-mcp https://github.com/DocumaticAI/mcp-cli/releases/download/latest/rover-mcp-<os>-<arch>
+$ wget -O rover-mcp https://github.com/rover-app/mcp-cli/releases/latest/download/rover-mcp-<os>-<arch>
 $ chmod +x rover-mcp
 ```
 
