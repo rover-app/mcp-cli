@@ -8,6 +8,11 @@ You can generate an API key from your Rover dashboard.
 You may have to specify absolute paths in the `command` field below.
 If you don't have a JavaScript runtime installed, you can grab a binary from the latest release instead (you will have to manually update it).
 
+### In Zed
+
+If you're using Zed, you can install the [Rover Zed extension](https://github.com/rover-app/zed-extension)
+through the Zed extension registry. This is the recommended way to install the Rover MCP server with Zed.
+
 ### Using npx
 
 ```json
